@@ -11,9 +11,9 @@ class TmBarangInventarisController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function daftarBarang()
     {
-        //
+        return view('barangInventaris.daftarBarang');
     }
 
     /**
