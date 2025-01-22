@@ -1,81 +1,74 @@
 @extends('templates.header')
 
-@section('content')
-<div class="container-fluid min-vh-50 d-flex flex-column justify-content-start py-4">
-    <div class="content">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Daftar Barang</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead class="text-primary">
-                                    <tr>
-                                        <th class="text-center">No</th>
-                                        <th class="text-center">Jenis Barang</th>
-                                        <th class="text-center">User</th>
-                                        <th class="text-center">Nama Barang</th>
-                                        <th class="text-center">Tanggal Masuk</th>
-                                        <th class="text-center">Tanggal Diterima</th>
-                                        <th class="text-center">Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="text-center">1</td>
-                                        <td class="text-center">Alat Kelas</td>
-                                        <td class="text-center">Siswa</td>
-                                        <td class="text-center">Kursi</td>
-                                        <td class="text-center">14/01/2025</td>
-                                        <td class="text-center">10/01/2025</td>
-                                        <td class="text-center">Diterima</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">2</td>
-                                        <td class="text-center">Alat Kelas</td>
-                                        <td class="text-center">Siswa</td>
-                                        <td class="text-center">Meja</td>
-                                        <td class="text-center">14/01/2025</td>
-                                        <td class="text-center">12/01/2025</td>
-                                        <td class="text-center">Diterima</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">3</td>
-                                        <td class="text-center">Alat Kelas</td>
-                                        <td class="text-center">Siswa</td>
-                                        <td class="text-center">Infocus</td>
-                                        <td class="text-center">14/01/2025</td>
-                                        <td class="text-center">15/01/2025</td>
-                                        <td class="text-center">Pending</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">4</td>
-                                        <td class="text-center">Alat Kelas</td>
-                                        <td class="text-center">Siswa</td>
-                                        <td class="text-center">Laptop</td>
-                                        <td class="text-center">14/01/2025</td>
-                                        <td class="text-center">20/01/2025</td>
-                                        <td class="text-center">Diterima</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">5</td>
-                                        <td class="text-center">Alat Kelas</td>
-                                        <td class="text-center">Siswa</td>
-                                        <td class="text-center">Terminal</td>
-                                        <td class="text-center">14/01/2025</td>
-                                        <td class="text-center">22/01/2025</td>
-                                        <td class="text-center">Pending</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+@section('content') 
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-title">Daftar Barang</p>
+              <div class="row">
+                <div class="col-12">
+                  <div class="table-responsive">
+                    <table id="example" class="display expandable-table" style="width:100%">
+                      <thead>
+                        <tr class="text-center">
+                          <th>Kode</th>
+                          <th>Jenis Barang</th>
+                          <th>User id</th>
+                          <th>Nama Barang</th>
+                          <th>Tanggal Terima</th>
+                          <th>Tanggal Entry</th>
+                          <th>Status</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="text-center">
+                            <th>INV202500001</th>
+                            <th>Elektronik</th>
+                            <th>2</th>
+                            <th>Infocus</th>
+                            <th>2025-01-22</th>
+                            <th>2025-01-25</th>
+                            <th>Masuk</th>
+                        </tr>
+                        <tr class="text-center">
+                            <th>INV202500002</th>
+                            <th>Alat Tulis</th>
+                            <th>3</th>
+                            <th>Spidol</th>
+                            <th>2025-01-22</th>
+                            <th>2025-01-25</th>
+                            <th>Pinjam</th>
+                        </tr>
+                        <tr class="text-center">
+                            <th>INV202500003</th>
+                            <th>Alat Tulis</th>
+                            <th>3</th>
+                            <th>Spidol</th>
+                            <th>2025-01-22</th>
+                            <th>2025-01-25</th>
+                            <th>Pinjam</th>
+                        </tr>
+                        <tr class="text-center">
+                            <th>INV202500004</th>
+                            <th>Alat Tulis</th>
+                            <th>3</th>
+                            <th>Spidol</th>
+                            <th>2025-01-22</th>
+                            <th>2025-01-25</th>
+                            <th>Pinjam</th>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</div>
+      </div>
+  </div>
 @endsection

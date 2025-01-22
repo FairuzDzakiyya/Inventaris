@@ -15,6 +15,10 @@ class TmBarangInventarisController extends Controller
     {
         return view('barangInventaris.daftarBarang');
     }
+    public function penerimaanBarang()
+    {
+        return view('barangInventaris.penerimaan');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -29,7 +33,19 @@ class TmBarangInventarisController extends Controller
      */
     public function store(Storetm_barang_inventarisRequest $request)
     {
-        //
+        if(TmBarangInventarisController::get()->count() == null){
+            $kodeBaru = 0;
+        }else{
+            $kodeBaru = tm_barang_inventaris::selectRaw('SUBSTRING(br_kode, 4) as angka')->orderBy('id', 'desc')->first()->angka;
+        }
+        // dd($kodeBaru);
+        $kodeFix = 'br-' . $kodeBaru +1;
+        $request->validate([
+            'br_nama' => 'required|max:50',
+            'br_tgl_terima' => 'required|date',
+            'br_status' => 'required|max:2',
+        ]);
+        // dd($request->all());
     }
 
     /**

@@ -2,181 +2,200 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Inventaris</title>
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport" />
-  <!-- Fonts and icons -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-  <!-- CSS Files -->
-  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
-  <link href="../assets/demo/demo.css" rel="stylesheet" />
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../assets/vendors/feather/feather.css">
+  <link rel="stylesheet" href="../assets/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="../assets/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../assets/vendors/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../assets/vendors/mdi/css/materialdesignicons.min.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- <link rel="stylesheet" href="../assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css"> -->
+  <link rel="stylesheet" href="../assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
+  <link rel="stylesheet" href="../assets/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" type="text/css" href="../assets/js/select.dataTables.min.css">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="../assets/images/favicon.png" />
 </head>
 
-<body class="">
-  <div class="wrapper">
-    <div class="sidebar" data-color="white" data-active-color="danger">
-      <div class="logo">
-        <a href="#" class="simple-text logo-mini">
-          <div class="logo-image-small">
-            <img src="../assets/img/logo-small.png" alt="Logo">
-          </div>
-        </a>
-        <a href="#" class="simple-text logo-normal">Inventaris</a>
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+        <div class="font-weight-bold">
+          <h3 class="mt-2">Inventaris</h3>
+        </div>
       </div>
-      <div class="sidebar-wrapper">
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="icon-menu"></span>
+        </button>
+        <ul class="navbar-nav mr-lg-2">
+          <li class="nav-item nav-search d-none d-lg-block">
+            <div class="input-group">
+              <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                <span class="input-group-text" id="search">
+                  <i class="icon-search"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now"
+                aria-label="search" aria-describedby="search">
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
+              data-bs-toggle="dropdown">
+              <i class="icon-bell mx-0"></i>
+              <span class="count"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+              aria-labelledby="notificationDropdown">
+              <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-success">
+                    <i class="ti-info-alt mx-0"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-normal">Application Error</h6>
+                  <p class="font-weight-light small-text mb-0 text-muted"> Just now </p>
+                </div>
+              </a>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-warning">
+                    <i class="ti-settings mx-0"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-normal">Settings</h6>
+                  <p class="font-weight-light small-text mb-0 text-muted"> Private message </p>
+                </div>
+              </a>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-info">
+                    <i class="ti-user mx-0"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-normal">New user registration</h6>
+                  <p class="font-weight-light small-text mb-0 text-muted"> 2 days ago </p>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
+              <img src="assets/images/faces/face28.jpg" alt="profile" />
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <a class="dropdown-item">
+                <i class="ti-settings text-primary"></i> Settings </a>
+              <a class="dropdown-item">
+                <i class="ti-power-off text-primary"></i> Logout </a>
+            </div>
+          </li>
+          <li class="nav-item nav-settings d-none d-lg-flex">
+            <a class="nav-link" href="#">
+              <i class="icon-ellipsis"></i>
+            </a>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+          data-toggle="offcanvas">
+          <span class="icon-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
-          <li class="nav-item active">
-            <a href="../home">
-              <i class="nc-icon nc-bank"></i>
-              <p>Home</p>
+          <li class="nav-item">
+            <a class="nav-link" href="/home">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#barangInventarisMenu" data-toggle="collapse" aria-expanded="false" class="nav-link">
-              <i class="nc-icon nc-box-2"></i>
-              <p>Barang Inventaris <b class="caret mt-2"></b></p>
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
+              aria-controls="ui-basic">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Barang Inventaris</span>
+              {{-- <i class="menu-arrow"></i> --}}
             </a>
-            <div id="barangInventarisMenu" class="collapse">
-              <ul class="nav">
-                <li>
-                  <a href="../barang-inventaris">
-                    <span class="sidebar-normal">Daftar Barang</span>
-                  </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/barang-inventaris">Daftar Barang</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/penerimaan">Penerimaan Barang</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false"
+              aria-controls="form-elements">
+              <i class="icon-columns menu-icon"></i>
+              <span class="menu-title">Peminjaman Barang</span>
+              {{-- <i class="menu-arrow"></i> --}}
+            </a>
+            <div class="collapse" id="form-elements">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Daftar Peminjaman</a>
                 </li>
-                <li>
-                  <a href="./penerimaan-barang.html">
-                    <span class="sidebar-normal">Penerimaan Barang</span>
-                  </a>
+                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Pengembalian Barang</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Peminjaman Barang</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Barang Belum Kembali</a>
                 </li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a href="#peminjamanBarangMenu" data-toggle="collapse" aria-expanded="false" class="nav-link">
-              <i class="nc-icon nc-bookmark-2"></i>
-              <p>Peminjaman Barang <b class="caret mt-2"></b></p>
+            <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+              <i class="icon-bar-graph menu-icon"></i>
+              <span class="menu-title">Laporan</span>
+              {{-- <i class="menu-arrow"></i> --}}
             </a>
-            <div id="peminjamanBarangMenu" class="collapse">
-              <ul class="nav">
-                <li>
-                  <a href="./daftar-peminjaman.html">
-                    <span class="sidebar-normal">Daftar Peminjaman</span>
-                  </a>
+            <div class="collapse" id="charts">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Laporan Daftar Barang</a>
                 </li>
-                <li>
-                  <a href="./pengembalian-barang.html">
-                    <span class="sidebar-normal">Pengembalian Barang</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="./barang-belum-kembali.html">
-                    <span class="sidebar-normal">Barang Belum Kembali</span>
-                  </a>
+                <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Laporan Barang</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Laporan Status Barang</a>
                 </li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a href="#laporanBarangMenu" data-toggle="collapse" aria-expanded="false" class="nav-link">
-              <i class="nc-icon nc-single-copy-04"></i>
-              <p>Laporan <b class="caret mt-2"></b></p>
+            <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+              <i class="icon-grid-2 menu-icon"></i>
+              <span class="menu-title">Referensi</span>
+              {{-- <i class="menu-arrow"></i> --}}
             </a>
-            <div id="laporanBarangMenu" class="collapse">
-              <ul class="nav">
-                <li>
-                  <a href="./laporan-daftar-barang.html">
-                    <span class="sidebar-normal">Laporan Daftar Barang</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="./laporan-barang.html">
-                    <span class="sidebar-normal">Laporan Barang</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="./laporan-status-barang.html">
-                    <span class="sidebar-normal">Laporan Status Barang</span>
-                  </a>
-                </li>
+            <div class="collapse" id="tables">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Jenis Barang</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Daftar Pengguna</a></li>
               </ul>
             </div>
           </li>
         </ul>
-      </div>
-    </div>
-    <div class="main-panel">
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
-        <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <button class="navbar-toggler">
-              <span class="navbar-toggler-bar bar1"></span>
-              <span class="navbar-toggler-bar bar2"></span>
-              <span class="navbar-toggler-bar bar3"></span>
-            </button>
-            <a class="navbar-brand" href="javascript:;">Halo, User!</a>
-          </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="nc-icon nc-zoom-split"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link btn-magnify" href="javascript:;">
-                  <i class="nc-icon nc-layout-11"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Stats</span>
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item btn-rotate dropdown">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="nc-icon nc-bell-55"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Some Actions</span>
-                  </p>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link btn-rotate" href="javascript:;">
-                  <i class="nc-icon nc-settings-gear-65"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Account</span>
-                  </p>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
       </nav>
       <div class="content">
         @yield('content')
       </div>
       @include('templates.footer')
-    </div>
-  </div>
-</body>
-
-</html>

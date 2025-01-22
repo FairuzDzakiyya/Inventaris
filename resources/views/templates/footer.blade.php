@@ -1,45 +1,36 @@
 <footer class="footer">
-  <div class="container-fluid">
-    <div class="row">
-      <nav class="footer-nav">
-        <ul>
-          <li><a href="https://www.creative-tim.com" target="_blank">Creative Tim</a></li>
-          <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
-          <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
-        </ul>
-      </nav>
-      <div class="credits ml-auto">
-        <span class="copyright">
-          © <script>
-            document.write(new Date().getFullYear())
-          </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
-        </span>
-      </div>
-    </div>
+  <div class="d-sm-flex justify-content-center justify-content-sm-between">
+    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2025. <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
+    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ms-1"></i></span>
   </div>
 </footer>
-</div>
-</div>
-<!--   Core JS Files   -->
-<script src="../../../assets/js/core/jquery.min.js"></script>
-<script src="../../../assets/js/core/popper.min.js"></script>
-<script src="../../../assets/js/core/bootstrap.min.js"></script>
-<script src="../../../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-<!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<!-- Chart JS -->
-<script src="../../../assets/js/plugins/chartjs.min.js"></script>
-<!--  Notifications Plugin    -->
-<script src="../../../assets/js/plugins/bootstrap-notify.js"></script>
-<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="../../../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-<script src="../../../assets/demo/demo.js"></script>
-<script>
-$(document).ready(function() {
-// Javascript method's body can be found in assets/assets-for-demo/js/demo.js
-demo.initChartsPages();
-});
-</script>
-</body>
-
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../assets/vendors/chart.js/chart.umd.js"></script>
+    <script src="../assets/vendors/datatables.net/jquery.dataTables.js"></script>
+    <!-- <script src="../assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script> -->
+    <script src="../assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
+    <script src="../assets/js/dataTables.select.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../assets/js/off-canvas.js"></script>
+    <script src="../assets/js/template.js"></script>
+    <script src="../assets/js/settings.js"></script>
+    <script src="../assets/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="../assets/js/jquery.cookie.js" type="text/javascript"></script>
+    <script src="../assets/js/dashboard.js"></script>
+    <!-- <script src="../assets/js/Chart.roundedBarCharts.js"></script> -->
+    <!-- End custom js for this page-->
+  </body>
 </html>
