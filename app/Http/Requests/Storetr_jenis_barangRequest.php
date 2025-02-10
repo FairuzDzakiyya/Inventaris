@@ -11,7 +11,7 @@ class Storetr_jenis_barangRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**

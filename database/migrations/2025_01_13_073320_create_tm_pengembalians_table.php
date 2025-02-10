@@ -12,12 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tm_pengembalian', function (Blueprint $table) {
-            $table->id();
-            $table->string('kembali_id', 20)->unique();
-            $table->string('pb_id', 20)->nullable();
-            $table->bigInteger('user_id')->nullable();
+            $table->string('kembali_id')->primary();
+            $table->string('pb_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->dateTime('kembali_tgl')->nullable();
             $table->char('kembali_sts', 2)->nullable();
+            $table->timestamps();
+
+            $table->foreign('pb_id')->references('pb_id')->on('tm_peminjaman')->onDelete('cascade');
+            $table->foreign('user_id')->references('user_id')->on('tm_users')->onDelete('cascade');
         });
     }
 

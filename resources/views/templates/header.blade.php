@@ -38,19 +38,6 @@
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
           <span class="icon-menu"></span>
         </button>
-        <ul class="navbar-nav mr-lg-2">
-          <li class="nav-item nav-search d-none d-lg-block">
-            <div class="input-group">
-              <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-                <span class="input-group-text" id="search">
-                  <i class="icon-search"></i>
-                </span>
-              </div>
-              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now"
-                aria-label="search" aria-describedby="search">
-            </div>
-          </li>
-        </ul>
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
@@ -103,14 +90,9 @@
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
                 <i class="ti-settings text-primary"></i> Settings </a>
-              <a class="dropdown-item">
+              <a class="dropdown-item" href="{{ route('logout') }}">
                 <i class="ti-power-off text-primary"></i> Logout </a>
             </div>
-          </li>
-          <li class="nav-item nav-settings d-none d-lg-flex">
-            <a class="nav-link" href="#">
-              <i class="icon-ellipsis"></i>
-            </a>
           </li>
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
@@ -153,11 +135,9 @@
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Daftar Peminjaman</a>
+                <li class="nav-item"><a class="nav-link" href="/daftar-peminjaman">Daftar Peminjaman</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Pengembalian Barang</a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Peminjaman Barang</a>
+                <li class="nav-item"><a class="nav-link" href="/daftar-pengembalian">Pengembalian Barang</a>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Barang Belum Kembali</a>
                 </li>
@@ -172,7 +152,7 @@
             </a>
             <div class="collapse" id="charts">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Laporan Daftar Barang</a>
+                <li class="nav-item"> <a class="nav-link" href="/laporandb">Laporan Daftar Barang</a>
                 </li>
                 <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Laporan Barang</a></li>
                 <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Laporan Status Barang</a>
@@ -184,12 +164,24 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
               <i class="icon-grid-2 menu-icon"></i>
               <span class="menu-title">Referensi</span>
-              {{-- <i class="menu-arrow"></i> --}}
             </a>
             <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Jenis Barang</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/jenis-barang">Jenis Barang</a></li>
                 <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Daftar Pengguna</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+              <i class="icon-head menu-icon"></i>
+              <span class="menu-title">Siswa</span>
+            </a>
+            <div class="collapse" id="auth">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/siswa">Data Siswa</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/kelas">Kelas</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/jurusan">Jurusan</a></li>
               </ul>
             </div>
           </li>

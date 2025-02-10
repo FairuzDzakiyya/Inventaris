@@ -17,10 +17,15 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+    protected $table = 'tm_users';
+
+    protected $primaryKey = 'user_id';
+
+    public $timestamps = false;
+
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'user_nama',
+        'user_pass',
     ];
 
     /**
@@ -29,7 +34,7 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $hidden = [
-        'password',
+        'user_pass',
         'remember_token',
     ];
 
@@ -41,8 +46,12 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'user_pass' => 'hashed',
         ];
+    }
+
+    public function peminjaman()
+    {
+        return $this->hasMany(tm_peminjaman::class, 'user_id', 'user_id');
     }
 }

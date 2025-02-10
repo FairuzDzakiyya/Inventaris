@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tm_users', function (Blueprint $table) {
-            $table->id();
-            $table->string('user_id', 10)->unique();
+            $table->unsignedBigInteger('user_id')->primary()->autoIncrement();
             $table->string('user_nama', 50)->nullable();
-            $table->string('user_pass', 255)->nullable();
+            $table->string('user_pass')->nullable();
             $table->char('user_hak', 2)->nullable();
             $table->char('user_sts', 2)->nullable();
+            $table->timestamps();
         });
     }
 

@@ -7,13 +7,15 @@ use App\Http\Requests\Storetr_jenis_barangRequest;
 use App\Http\Requests\Updatetr_jenis_barangRequest;
 
 class TrJenisBarangController extends Controller
-{
+{   
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        // dd(auth()->user());
+        $data['jeniss'] = tr_jenis_barang::all();
+        return view('referensi.jenis')->with($data);
     }
 
     /**
@@ -29,7 +31,19 @@ class TrJenisBarangController extends Controller
      */
     public function store(Storetr_jenis_barangRequest $request)
     {
-        //
+        $request->validate([
+            'jns_brg_kode' => 'required|string|max:10|unique:tr_jenis_barangs,jns_brg_kode',
+            'jns_brg_nama' => 'required|string|max:255',
+        ]);
+
+        // Simpan data ke database
+        tr_jenis_barang::create([
+            'jns_brg_kode' => $request->jns_brg_kode,
+            'jns_brg_nama' => $request->jns_brg_nama,
+        ]);
+
+        // Redirect kembali dengan pesan sukses
+        return redirect()->route('jenisBarang')->with('success', 'Jenis Barang berhasil ditambahkan!');
     }
 
     /**

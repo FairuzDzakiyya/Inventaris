@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\tr_jenis_barang;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 

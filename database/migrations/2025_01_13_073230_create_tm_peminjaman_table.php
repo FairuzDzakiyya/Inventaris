@@ -12,14 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tm_peminjaman', function (Blueprint $table) {
-            $table->id();
-            $table->string('pb_id', 20)->unique();
-            $table->bigInteger('user_id')->nullable();
+            $table->id()->autoIncrement();
+            $table->string('pb_id')->unique();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->dateTime('pb_tgl')->nullable();
             $table->string('pb_no_siswa', 20)->nullable();
             $table->string('pb_nama_siswa', 100)->nullable();
+            $table->string('kelas_id', 10)->nullable();
             $table->dateTime('pb_harus_kembali_tgl')->nullable();
-            $table->char('pb_stat', 2)->nullable();
+            $table->char('pb_stat', 15)->nullable();
+            $table->timestamps();
+
+            $table->foreign('user_id')->references('user_id')->on('tm_users')->onDelete('cascade');
+            $table->foreign('kelas_id')->references('kelas_id')->on('kelas')->onDelete('cascade');
         });
     }
 
@@ -28,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tm_peminjamen');
+        Schema::dropIfExists('tm_peminjaman');
     }
 };

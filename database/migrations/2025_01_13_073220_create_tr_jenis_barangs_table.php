@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,10 +10,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tr_jenis_barangs', function (Blueprint $table) {
-            $table->id();
-            $table->string('jns_brg_kode', 5)->unique();
+    Schema::create('tr_jenis_barangs', function (Blueprint $table) {
+            $table->string('jns_brg_kode', 10)->primary();
             $table->string('jns_brg_nama', 50)->nullable();
+            $table->timestamps();
         });
     }
 
