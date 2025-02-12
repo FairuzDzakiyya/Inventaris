@@ -36,14 +36,17 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/laporandb', [TmBarangInventarisController::class, 'laporan']);
 
-    Route::get('/siswa', [SiswaController::class, 'index']);
+    Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
     Route::post('/siswa', [SiswaController::class, 'store'])->name('postSiswa');
+    Route::delete('/siswa', [SiswaController::class, 'destroy'])->name('hapusSiswa');
 
     Route::get('/kelas', [KelasController::class, 'index']);
-    Route::get('/kelas', [KelasController::class, 'index']);
+    Route::post('/kelas', [KelasController::class, 'store'])->name('kelas');
+    Route::delete('/kelas', [KelasController::class, 'destroy'])->name('hapusKelas');
 
-    Route::get('/jurusan', [JurusanController::class, 'index']);
+    Route::get('/jurusan', [JurusanController::class, 'index']);    
     Route::post('/jurusan', [JurusanController::class, 'store'])->name('jurusan');
+    Route::delete('/jurusan/{jurusan}', [JurusanController::class, 'destroy'])->name('hapusJurusan');
 
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 });

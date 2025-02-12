@@ -6,6 +6,7 @@ use App\Models\kelas;
 use App\Models\tm_barang_inventaris;
 use App\Models\tm_peminjaman;
 use App\Models\td_peminjaman_barang;
+use App\Models\Siswa;
 use Auth;
 use Carbon\Carbon;
 use DB;
@@ -18,8 +19,8 @@ class TmPeminjamanController extends Controller
      */
     public function index(Request $request)
     {
-        $data['peminjaman'] = tm_peminjaman::with(['barang.barangInventaris', 'user'])->get();
-        return view('peminjaman.daftarPeminjaman', $data);
+        $peminjaman = tm_peminjaman::with(['user', 'kelas', 'jurusan', 'barang.barangInventaris.jenisBarang'])->get();
+        return view('peminjaman.daftarPeminjaman', compact('peminjaman'));
     }
 
 
@@ -27,6 +28,7 @@ class TmPeminjamanController extends Controller
     {
         $data['kelass'] = kelas::all();
         $data['barangs'] = tm_barang_inventaris::all();
+        $data['siswas'] = Siswa::with('jurusan')->get(); // Ambil data siswa beserta jurusan
         $data['dataBarang'] = tm_barang_inventaris::with('peminjamanBarang')
             ->whereHas('peminjamanBarang', function ($q) {
                 $q->where('pdb_sts', '!=', 1);

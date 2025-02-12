@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('siswas', function (Blueprint $table) {
-            $table->string('siswa_id', 12)->primary();
+            $table->increments('siswa_id'); // Menggunakan increments untuk ID otomatis
             $table->string('kelas_id', 12)->nullable();
             $table->string('jurusan_id', 12)->nullable();
             $table->string('nama_siswa', 100)->nullable();

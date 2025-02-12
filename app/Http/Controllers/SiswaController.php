@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\siswa;
-use App\Http\Requests\StoresiswaRequest;
-use App\Http\Requests\UpdatesiswaRequest;
+use App\Models\Siswa;
+use App\Models\Kelas;
+use App\Models\Jurusan;
+use App\Http\Requests\StoreSiswaRequest;
+use App\Http\Requests\UpdateSiswaRequest;
 
 class SiswaController extends Controller
 {
@@ -14,7 +16,9 @@ class SiswaController extends Controller
     public function index()
     {
         return view('siswa.siswa', [
-            'siswa' => siswa::with('kelas', 'jurusan')->get(),
+            'siswa' => Siswa::with('kelas', 'jurusan')->get(),
+            'kelas' => Kelas::all(),
+            'jurusan' => Jurusan::all(),
         ]);
     }
 
@@ -29,15 +33,17 @@ class SiswaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoresiswaRequest $request)
+    public function store(StoreSiswaRequest $request)
     {
-        //
+        Siswa::create($request->validated());
+
+        return redirect()->route('siswa')->with('success', 'Siswa berhasil ditambahkan!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(siswa $siswa)
+    public function show(Siswa $siswa)
     {
         //
     }
@@ -45,7 +51,7 @@ class SiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(siswa $siswa)
+    public function edit(Siswa $siswa)
     {
         //
     }
@@ -53,7 +59,7 @@ class SiswaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatesiswaRequest $request, siswa $siswa)
+    public function update(UpdateSiswaRequest $request, Siswa $siswa)
     {
         //
     }
@@ -61,8 +67,9 @@ class SiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(siswa $siswa)
+    public function destroy(Siswa $siswa)
     {
-        //
+        $siswa->delete();
+        return redirect()->route('siswa')->with('success', 'Siswa berhasil dihapus!');
     }
 }

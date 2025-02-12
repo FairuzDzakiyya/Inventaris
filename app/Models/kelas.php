@@ -1,29 +1,32 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class kelas extends Model
+class Kelas extends Model
 {
-    /** @use HasFactory<\Database\Factories\KelasFactory> */
     use HasFactory;
 
-    protected $table = 'kelas';
     protected $primaryKey = 'kelas_id';
-    protected $keyType = 'string';
-    public $incrementing = false;
-    
+    public $incrementing = true; // Menggunakan auto-increment
+    protected $keyType = 'int'; // Tipe data integer
+
     protected $fillable = [
-        'kelas_id',
-        'jurusan_id',
         'kelas',
         'no_kelas',
+        'jurusan_id',
     ];
+
+    // Relasi ke Jurusan (Many to One)
+    public function jurusan()
+    {
+        return $this->belongsTo(Jurusan::class, 'jurusan_id', 'jurusan_id');
+    }
 
     public function peminjaman()
     {
         return $this->hasMany(tm_peminjaman::class, 'kelas_id', 'kelas_id');
     }
 }
+

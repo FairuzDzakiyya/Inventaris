@@ -4,18 +4,17 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
         Schema::create('kelas', function (Blueprint $table) {
-            $table->string('kelas_id', 12)->primary();
+            $table->bigIncrements('kelas_id'); // Menggunakan bigIncrements untuk ID otomatis
             $table->string('jurusan_id', 12)->nullable();
-            $table->string('kelas', 10)->nullable();
-            $table->char('no_kelas', 7)->nullable();
+            $table->string('kelas', 100)->nullable();
+            $table->string('no_kelas', 20)->nullable();
             $table->timestamps();
         });
     }

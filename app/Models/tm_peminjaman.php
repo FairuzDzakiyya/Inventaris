@@ -27,6 +27,10 @@ class tm_peminjaman extends Model
     {
         return $this->belongsTo(kelas::class, 'kelas_id', 'kelas_id'); 
     }
+    public function jurusan()
+    {
+        return $this->belongsTo(Jurusan::class, 'jurusan_id', 'jurusan_id'); 
+    }
     public function pengembalian()
     {
         return $this->hasOne(tm_pengembalian::class, 'pb_id',); 

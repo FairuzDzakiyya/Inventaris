@@ -13,9 +13,8 @@ class JurusanController extends Controller
      */
     public function index()
     {
-        return view('siswa.jurusan', [
-            'jurusan' => jurusan::all(),
-        ]);
+        $jurusan = Jurusan::with('kelas')->get(); // Ambil semua jurusan dengan kelasnya
+        return view('siswa.jurusan', compact('jurusan'));
     }
 
     /**
@@ -32,18 +31,14 @@ class JurusanController extends Controller
     public function store(StorejurusanRequest $request)
     {
         $request->validate([
-            'jurusan_id' => 'required|unique:jurusan,jurusan_id|max:12',
             'nama_jurusan' => 'required|string|max:255',
         ]);
 
-        // Simpan data ke database
-        jurusan::create([
-            'jurusan_id' => $request->jurusan_id,
+        Jurusan::create([
             'nama_jurusan' => $request->nama_jurusan,
         ]);
 
-        // Redirect kembali dengan pesan sukses
-        return redirect()->route('jurusan')->with('success', 'Jenis Barang berhasil ditambahkan!');
+        return redirect()->route('jurusan')->with('success', 'Jurusan berhasil ditambahkan!');
     }
 
     /**
@@ -73,8 +68,10 @@ class JurusanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(jurusan $jurusan)
+    public function destroy($jurusan)
     {
-        //
+        $jurusan = jurusan::findOrFail($jurusan);
+        $jurusan->delete();
+        return redirect()->route('hapusJurusan')->with('success', 'Jurusan berhasil dihapus!');
     }
 }

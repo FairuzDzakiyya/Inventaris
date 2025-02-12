@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\kelas;
+use App\Models\Kelas;
+use App\Models\Jurusan;
 use App\Http\Requests\StorekelasRequest;
 use App\Http\Requests\UpdatekelasRequest;
 
@@ -13,9 +14,9 @@ class KelasController extends Controller
      */
     public function index()
     {
-        return view('siswa.kelas', [
-            'kelas' => kelas::all(),
-        ]);
+        $kelas = Kelas::with('jurusan')->get(); // Ambil semua kelas dengan jurusannya
+        $jurusan = Jurusan::all(); // Ambil semua jurusan
+        return view('siswa.kelas', compact('kelas', 'jurusan'));
     }
 
     /**
@@ -31,13 +32,25 @@ class KelasController extends Controller
      */
     public function store(StorekelasRequest $request)
     {
-        //
+        $request->validate([
+            'kelas' => 'required',
+            'no_kelas' => 'required',
+            'jns_brg_kode' => 'required',
+        ]);
+
+        Kelas::create([
+            'kelas' => $request->kelas,
+            'no_kelas' => $request->no_kelas,
+            'jurusan_id' => $request->jns_brg_kode,
+        ]);
+
+        return redirect()->route('kelas')->with('success', 'Kelas berhasil ditambahkan!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(kelas $kelas)
+    public function show(Kelas $kelas)
     {
         //
     }
@@ -45,7 +58,7 @@ class KelasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(kelas $kelas)
+    public function edit(Kelas $kelas)
     {
         //
     }
@@ -53,7 +66,7 @@ class KelasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatekelasRequest $request, kelas $kelas)
+    public function update(UpdatekelasRequest $request, Kelas $kelas)
     {
         //
     }
@@ -61,8 +74,10 @@ class KelasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(kelas $kelas)
+    public function destroy($kelas)
     {
-        //
+        $kelas = jurusan::findOrFail($kelas);
+        $kelas->delete();
+        return redirect()->route('hapusKelas')->with('success', 'Jurusan berhasil dihapus!');
     }
 }

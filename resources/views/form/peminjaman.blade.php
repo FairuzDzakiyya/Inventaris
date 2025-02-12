@@ -10,18 +10,18 @@
             <h4 class="card-title">Form Input Peminjaman</h4>
 
             @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-      @endif
+              <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
 
             @if ($errors->any())
-        <div class="alert alert-danger">
-          <ul>
-          @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-      @endforeach
-          </ul>
-        </div>
-      @endif
+              <div class="alert alert-danger">
+                <ul>
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
 
             <!-- Form Identitas -->
             <div id="form-identitas" class="form-section">
@@ -29,27 +29,35 @@
                 @csrf
 
                 <div class="form-group">
+                  <label for="siswa_id">Pilih Siswa</label>
+                  <select class="form-select" id="siswa_id" name="siswa_id" required>
+                    <option value="">Pilih Siswa</option>
+                    @foreach ($siswas as $siswa)
+                      <option value="{{ $siswa->siswa_id }}" data-nama="{{ $siswa->nama_siswa }}" data-nis="{{ $siswa->nis }}" data-kelas="{{ $siswa->kelas_id }}">{{ $siswa->nama_siswa }}</option>
+                    @endforeach
+                  </select>
+                </div>
+
+                <div class="form-group">
                   <label for="pb_nama_siswa">Nama Siswa</label>
-                  <input type="text" class="form-control" id="pb_nama_siswa" name="pb_nama_siswa"
-                    placeholder="Masukkan nama siswa" required>
+                  <input type="text" class="form-control" id="pb_nama_siswa" name="pb_nama_siswa" placeholder="Masukkan nama siswa" required readonly>
                 </div>
 
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="pb_no_siswa">NIS</label>
-                      <input type="number" class="form-control" id="pb_no_siswa" name="pb_no_siswa"
-                        placeholder="Masukkan NIS" required>
+                      <input type="number" class="form-control" id="pb_no_siswa" name="pb_no_siswa" placeholder="Masukkan NIS" required readonly>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="kelas_id">Kelas</label>
-                      <select class="form-select" name="kelas_id" required>
+                      <select class="form-select" id="kelas_id" name="kelas_id" required readonly>
                         <option value="">Pilih Kelas</option>
                         @foreach ($kelass as $kelas)
-              <option value="{{ $kelas->kelas_id }}">{{ $kelas->kelas }}</option>
-            @endforeach
+                          <option value="{{ $kelas->kelas_id }}">{{ $kelas->kelas }}</option>
+                        @endforeach
                       </select>
                     </div>
                   </div>
@@ -65,8 +73,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="pb_harus_kembali_tgl">Tanggal Pengembalian</label>
-                      <input type="date" class="form-control" id="pb_harus_kembali_tgl" name="pb_harus_kembali_tgl"
-                        required>
+                      <input type="date" class="form-control" id="pb_harus_kembali_tgl" name="pb_harus_kembali_tgl" required>
                     </div>
                   </div>
                 </div>
@@ -103,14 +110,14 @@
                         </thead>
                         <tbody>
                           @foreach($barangs as $barang)
-                <tr>
-                <td>{{ $barang->br_kode }}</td>
-                <td>{{ $barang->br_nama }}</td>
-                <td class="text-center">
-                  <input type="checkbox" name="id[]" class="barang-checkbox" value="{{ $barang->br_kode }}">
-                </td>
-                </tr>
-              @endforeach
+                            <tr>
+                              <td>{{ $barang->br_kode }}</td>
+                              <td>{{ $barang->br_nama }}</td>
+                              <td class="text-center">
+                                <input type="checkbox" name="id[]" class="barang-checkbox" value="{{ $barang->br_kode }}">
+                              </td>
+                            </tr>
+                          @endforeach
                         </tbody>
                       </table>
 
@@ -163,29 +170,37 @@
         formBarang.classList.add("d-none");
         formIdentitas.classList.remove("d-none");
       });
+
+      // Mengisi otomatis data siswa berdasarkan pilihan
+      document.getElementById("siswa_id").addEventListener("change", function () {
+        const selectedOption = this.options[this.selectedIndex];
+        document.getElementById("pb_nama_siswa").value = selectedOption.getAttribute("data-nama");
+        document.getElementById("pb_no_siswa").value = selectedOption.getAttribute("data-nis");
+        document.getElementById("kelas_id").value = selectedOption.getAttribute("data-kelas");
+      });
     });
-    
-      document.addEventListener("DOMContentLoaded", function () {
-    const nisInput = document.getElementById("pb_no_siswa");
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const nisInput = document.getElementById("pb_no_siswa");
 
       // Mencegah input huruf
       nisInput.addEventListener("input", function () {
         this.value = this.value.replace(/\D/g, ''); // Menghapus karakter non-angka
-    });
+      });
 
       // Mencegah paste teks non-angka
       nisInput.addEventListener("paste", function (event) {
         event.preventDefault();
-      let pasted = (event.clipboardData || window.clipboardData).getData("text");
-      this.value = pasted.replace(/\D/g, '');
-    });
+        let pasted = (event.clipboardData || window.clipboardData).getData("text");
+        this.value = pasted.replace(/\D/g, '');
+      });
 
       // Mencegah input selain angka dari keyboard
       nisInput.addEventListener("keypress", function (event) {
-      if (event.key < "0" || event.key > "9") {
-        event.preventDefault();
-      }
+        if (event.key < "0" || event.key > "9") {
+          event.preventDefault();
+        }
+      });
     });
-  });
   </script>
-  @endsection
+@endsection

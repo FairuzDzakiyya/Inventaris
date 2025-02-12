@@ -20,8 +20,6 @@
                       <tr class="text-center">
                         <th>ID</th>
                         <th>User</th>
-                        {{-- <th>NIS</th>
-                        <th>Nama Siswa</th> --}}
                         <th>Tanggal Peminjaman</th>
                         <th>Tanggal Kembali</th>
                         <th>Detail</th>
@@ -29,7 +27,6 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {{-- @forelse ($peminjaman ?? [] as $pem) --}}
                       @foreach ($peminjaman as $pem)
                       <tr class="text-center">
                         <td>{{ $pem->pb_id }}</td>
@@ -67,11 +64,11 @@
                               </div>
                               <div class="form-group d-flex align-items-center">
                                 <label for="kelas" class="me-2">Kelas :</label>
-                                <p>{{ $pem->kelas->kelas }}</p>
+                                <p>{{ $pem->kelas->kelas ?? 'Tidak ada' }}</p>
                               </div>
                               <div class="form-group d-flex align-items-center">
                                 <label for="jurusan" class="me-2">Jurusan :</label>
-                                <p>{{ $pem->kelas->jurusan }}</p>
+                                <p>{{ $pem->jurusan->nama_jurusan ?? 'Tidak ada' }}</p>
                               </div>
 
                               <hr>
